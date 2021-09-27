@@ -216,8 +216,8 @@ def find_scientific_notation_errors(f, int_columns):
 
     for col, (value, line_num) in sci_not_line.items():
         e = dict(message=(
-            f"Scientific notation value '{value}' was found on line {line_num}. "
-            "Scientific notation is not allowed for integer fields."),
+            "Scientific notation value '{value}' was found on line {line_num}. "
+            "Scientific notation is not allowed for integer fields.".format(value=value, line_num=line_num)),
                  column_name=col)
         errors.append(e)
 
@@ -323,8 +323,8 @@ def run_checks(file_path, f):
         if blank_lines:
             blank_lines_str = ",".join(map(str, blank_lines))
             line_str = 'lines' if len(blank_lines) > 1 else 'line'
-            blank_lines_msg = f'File contains blank {line_str} on {line_str} {blank_lines_str}. ' \
-                              'If there is no data, please only submit the header line.'
+            blank_lines_msg = 'File contains blank {line_str} on {line_str} {blank_lines_str}. ' \
+                              'If there is no data, please only submit the header line.'.format(line_str=line_str, blank_lines_str=blank_lines_str)
 
             result['errors'].append(dict(message=blank_lines_msg))
             return result
