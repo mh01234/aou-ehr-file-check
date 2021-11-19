@@ -73,7 +73,7 @@ def get_cdm_table_columns(table_name):
     file = os.path.join(settings.cdm_metadata_path,
                         table_name.lower() + '.json')
     if os.path.isfile(file):
-        with open(file, 'r') as f:
+        with open(file, 'r', encoding='utf-8') as f:
             return json.load(f, object_pairs_hook=collections.OrderedDict)
     else:
         return None
